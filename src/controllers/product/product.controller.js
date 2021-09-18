@@ -1,6 +1,6 @@
 import { catchAsyncError } from "../../middleware";
 import { Product } from "../../model";
-import { APIFeature, errorHandler } from "../../Utils";
+import { APIFeature, ErrorHandler } from "../../Utils";
 
 
 
@@ -37,7 +37,7 @@ getSingleProduct:catchAsyncError( async (req,res,next)=>{
     const {id} = req.params;
     const product =await  Product.findById(id);
     if (!product) {
-            return next(new errorHandler("Product not fount",404))
+            return next(new ErrorHandler("Product not fount",404))
     }
     res.status(200).json({
         success: true,

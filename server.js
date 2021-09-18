@@ -4,7 +4,7 @@ import logger from './src/Helper/logger';
 import fs from 'fs';
 import path from 'path';
 import connectDatabase from './src/config/db'
-import {auth, product} from './src/routes'
+import {auth, order, product} from './src/routes'
 import { errorhandler } from './src/middleware';
 import cookieParser from 'cookie-parser'
 const morgan = require('morgan')
@@ -39,6 +39,8 @@ app.use(morgan('combined', { stream: accessLogStream },function (tokens, req, re
 
   app.use('/api/v1',product)
   app.use('/api/v1',auth)
+  app.use('/api/v1',order)
+
 
 
 
