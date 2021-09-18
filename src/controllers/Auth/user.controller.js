@@ -4,6 +4,7 @@ import ErrorHandler from "../../Utils/errorHandler";
 import sendToken from "../../Utils/jwtToken";
 import sendEmail from "../../Utils/sendEmail";
 import crypto from 'crypto'
+import { APIFeature } from "../../Utils";
 
 const userController  ={
     register:catchAsyncError( async (req,res,next) => {
@@ -126,11 +127,92 @@ updatePassword:catchAsyncError( async (req,res,next) =>{
 }),
 // Get all users => api/v1/admin/users
 allUsers :catchAsyncError( async (req,res,next) => {
-    const users = await User.find();
+    // const users = await User.find();
+    // res.status(200).json({
+    //     success:true,
+    //     users,
+    //     total:
+    // })
+
+
+    const resultPerpage =4;
+    const totalCount = await  User.countDocuments()
+        const apifeature = new APIFeature(User.find(),req.query)
+                                .search()
+                                .filter()
+                                .pagination(resultPerpage);
+        const users = await apifeature.query;
+        res.status(200).json({
+            success: true,
+            count:users.length,
+            productCount:totalCount, 
+            users
+        })
+}),
+// Get all users => api/v1/admin/users
+getUserDetails :catchAsyncError( async (req,res,next) => {
+    const users = await User.findById(req.params.id);
+    if(!users){
+        return next(new ErrorHandler(`User does not exist: ${req.params.id}`,404));
+    }
     res.status(200).json({
         success:true,
         users
     })
+}),
+// Update profile api/me/update
+updateProfile:catchAsyncError( async (req,res,next) => {
+        const userUserData ={
+            name:req.body.name,
+            email:req.body.email
+        }
+        // update user profile here
+
+        const user = await User.findByIdAndUpdate(req.user.id,userUserData,{
+            new:true,
+            runValidators:true,
+            useFindAndModify:false
+        })
+        res.status(200).json({
+            success:true,
+
+        })
+}),
+// Update profile api/admin/user/:id
+updateProfileByAdmin:catchAsyncError( async (req,res,next) => {
+    const userUserData ={
+        name:req.body.name,
+        email:req.body.email,
+        role:req.body.role,
+    }
+    // update user profile here
+
+    const user = await User.findByIdAndUpdate(req.params.id,userUserData,{
+        new:true,
+        runValidators:true,
+        useFindAndModify:false
+    })
+    res.status(200).json({
+        success:true,
+
+    })
+}),
+deleteUser:catchAsyncError( async (req,res,next) => {
+    const {id} = req.params;
+    const user = await User.findById(id);
+    if(!user){
+        res.status(404).json({
+            success:false,
+            message: 'User not found'
+        })
+    }
+    // delete avatar imag :TODO
+     await User.findByIdAndDelete(id);
+     res.status(200).json({
+         success:true,
+        message: 'User deleted successfully'
+     })
+
 })
 
 
