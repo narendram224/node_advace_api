@@ -47,17 +47,14 @@ const UserSchema = new Schema({
     resetPasswordToken:String,
     resetPasswordExpire:Date
        
-},{timestamp:true})
+},{timestamps:true})
 
 // Encrypt the password before sending it to the server
 
 UserSchema.pre('save',async function(next){
-    console.log("passowrd",this.isModified('password'));
     if(!this.isModified('password')){
-        console.log("next called");
         next()
     }
-    console.log("called bosy function");
     this.password = await bcrypt.hash(this.password,10);
 
 } )

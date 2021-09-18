@@ -1,2 +1,2 @@
 export {default as APIFeature} from './apiFeature';
-export {default as errorHandler} from './errorHandler';
+export {default as ErrorHandler} from './errorhandler';

@@ -1,5 +1,5 @@
 import { NODE_ENV } from "../config";
-import { errorHandler } from "../Utils";
+import { ErrorHandler } from "../Utils";
 
 export default (err,req,res,next) => {
     err.statusCode = err.statusCode || 500;
@@ -20,7 +20,7 @@ export default (err,req,res,next) => {
         // handle mongodb  Object id error
         if (err.name==='CastError'){
             const message = `Resource not found .Invalid ${err.path}`
-            error = new errorHandler(message,400)
+            error = new ErrorHandler(message,400)
         }
         // handling mongodb validation error
         

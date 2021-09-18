@@ -12,7 +12,6 @@ const schemaValidator = (schema, property) => {
     next(); 
   } else { 
     const { details } = error; 
-    // console.log("detail",details);
     const message = details.map(i => i.message).join(',');
 
     logger.error(message); 
