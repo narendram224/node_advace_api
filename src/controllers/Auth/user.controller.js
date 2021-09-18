@@ -1,10 +1,9 @@
 import { catchAsyncError } from "../../middleware";
 import { User } from "../../model";
-import ErrorHandler from "../../Utils/errorHandler";
 import sendToken from "../../Utils/jwtToken";
 import sendEmail from "../../Utils/sendEmail";
 import crypto from 'crypto'
-import { APIFeature } from "../../Utils";
+import { APIFeature, ErrorHandler } from "../../Utils";
 
 const userController  ={
     register:catchAsyncError( async (req,res,next) => {
