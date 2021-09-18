@@ -70,6 +70,37 @@ deleteProduct: catchAsyncError( async (req,res,next)=>{
    res.status(200).json({
        success: true,
    })
+}),
+createProductReview:catchAsyncError( async (req,res,next) => {
+    const {rating,comment,productId} = req.body;
+    const review = {
+        user:req.user.id,
+        name:req.user.name,
+        rating:Number(rating),
+        comment
+    }
+    const product = await Product.findById(productId)
+// check user is already review on this product is reviewd?then update the review: create a product
+    const isReviewed = product.reviews.find((r)=>r.user.toString() === req.user.id.toString())
+    if (isReviewed) {
+        product.reviews.forEach((review)=>{
+            if (review.user.toString() === req.user.id.toString()) {
+                review.comment = comment;
+                review.rating = rating;
+            }
+        })
+    }else{
+        product.reviews.push(review)
+        product.numOfReviews = product.reviews.length;
+    }
+    product.ratings = product.reviews.reducer((acc,item)=>(item.rating+acc),0/product.reviews.length)
+
+    await product.save({validateBeforeSave:false});
+    res.status(200).json({
+        success: true,
+        message: 'successfully added review'
+    })
+
 })
 }
 
