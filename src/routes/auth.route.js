@@ -12,6 +12,14 @@ router.route('/password/reset/:token').put(userController.resetPassword)
 router.route('/me').get( isAuthenticatedUser,userController.getUserProfile)
 router.route('/password/update').put( isAuthenticatedUser,userController.updatePassword)
 router.route('/admin/users').get( isAuthenticatedUser,authorizeRoles('admin'),userController.allUsers)
+router.route('/admin/user/:id').get( isAuthenticatedUser,authorizeRoles('admin'),userController.getUserDetails)
+                               .put( isAuthenticatedUser,authorizeRoles('admin'),userController.updateProfileByAdmin)
+                               .delete(isAuthenticatedUser,authorizeRoles('admin'),userController.deleteUser)
+
+
+router.route('/me/update').put( isAuthenticatedUser,userController.updateProfile)
+
+
 
 
 
