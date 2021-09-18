@@ -1,0 +1,8 @@
+
+import dotenv from 'dotenv'
+dotenv.config();
+
+
+export const {
+    PORT,NODE_ENV,DB_URI,JWT_SECRET,JWT_EXPIRES_TIME,COOKIE_EXPIRES_TIME,SMTP_HOST,SMTP_USER,SMTP_PASSWORD,SMTP_PORT,SMTP_FROM_NAME,SMTP_FROM_EMAIL
+} = process.env;

@@ -1,0 +1,172 @@
+[
+    {
+        
+        "price": "5.5",
+        "ratings": 4.5,
+        "numOfReviews": 32,
+        "name": "Books Data",
+        "description": "this is the first description",
+        "images": [
+            {
+                
+                "public_id": "sssfsfsss",
+                "url": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg"
+            }
+        ],
+        "category": "Electronics",
+        "seller": "Ebey",
+        "stock":50,
+        "reviews": []
+        
+    },
+    {
+        
+        "price": "315.00",
+        "ratings": 4,
+        "numOfReviews": 1,
+        "name": "Headphones Data",
+        "description": "Headphones this is the first description",
+        "images": [
+            {
+                
+                "public_id": "sssfsfsss",
+                "url": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg"
+            }
+        ],
+        "category": "Headphones",
+        "seller": "Sonu",
+        "stock":50,
+        "reviews": []
+        
+    },
+    {
+        
+        "price": "200.00",
+        "ratings": 3.5,
+        "numOfReviews": 1,
+        "name": "Headphones Second Data",
+        "description": "Headphones this is the first description",
+        "images": [
+            {
+                
+                "public_id": "sssfsfsss",
+                "url": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg"
+            }
+        ],
+        "category": "Headphones",
+        "seller": "Sony",
+        "stock":5,
+        "reviews": []
+        
+    },
+    {
+        "price": 5.5,
+        "ratings": 0,
+        "numOfReviews": 34,
+        "name": "this is",
+        "description": "th sis s",
+        "images": [
+            {
+                "public_id": "sssfsfsss",
+                "url": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg"
+            }
+        ],
+        "category": "Electronics",
+        "seller": "Ebey",
+        "stock": 200,
+        "reviews": []
+       
+    },
+    
+    {
+        "price": 500.5,
+        "ratings": 0,
+        "numOfReviews": 34,
+        "name": "Banana",
+        "description": "th sis s",
+        "images": [
+            {
+                "public_id": "sssfsfsss",
+                "url": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg"
+            }
+        ],
+        "category": "Electronics",
+        "seller": "Ebey",
+        "stock": 191,
+        "reviews": []
+        
+    },
+    {
+        "price": 2500.5,
+        "ratings": 0,
+        "numOfReviews": 34,
+        "name": "tomato",
+        "description": "th sis s",
+        "images": [
+            {
+                "public_id": "sssfsfsss",
+                "url": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg"
+            }
+        ],
+        "category": "Food",
+        "seller": "Ebey",
+        "stock": 200,
+        "reviews": []
+        
+    },
+    {
+        "price": 20.5,
+        "ratings": 0,
+        "numOfReviews": 34,
+        "name": "Maggi",
+        "description": "th sis s",
+        "images": [
+            {
+                "public_id": "sssfsfsss",
+                "url": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg"
+            }
+        ],
+        "category": "Food",
+        "seller": "Ebey",
+        "stock": 200,
+        "reviews": []
+       
+    },
+    
+    {
+        "price": 20.66,
+        "ratings": 0,
+        "numOfReviews": 22,
+        "name": "FirstProduct",
+        "description": "The product is first",
+        "images": [
+            {
+                "public_id": "sssfsfsss",
+                "url": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg"
+            }
+        ],
+        "category": "Camera",
+        "seller": "Ebey",
+        "reviews": [],
+        "stock": 100
+       
+    },
+    {
+        "price": 100,
+        "ratings": 0,
+        "numOfReviews": 2,
+        "name": "Nobal Book",
+        "description": "th sis s",
+        "images": [
+            {
+                "public_id": "sssfsfsss",
+                "url": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-math-90946.jpg&fm=jpg"
+            }
+        ],
+        "category": "Camera",
+        "seller": "Ebey",
+        "stock": 499,
+        "reviews": []
+       
+    }
+]
