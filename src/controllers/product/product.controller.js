@@ -71,6 +71,7 @@ deleteProduct: catchAsyncError( async (req,res,next)=>{
        success: true,
    })
 }),
+// create product review  -> api/v1/product/review
 createProductReview:catchAsyncError( async (req,res,next) => {
     const {rating,comment,productId} = req.body;
     const review = {
@@ -82,6 +83,8 @@ createProductReview:catchAsyncError( async (req,res,next) => {
     const product = await Product.findById(productId)
 // check user is already review on this product is reviewd?then update the review: create a product
     const isReviewed = product.reviews.find((r)=>r.user.toString() === req.user.id.toString())
+    console.log("the product is " , isReviewed);
+
     if (isReviewed) {
         product.reviews.forEach((review)=>{
             if (review.user.toString() === req.user.id.toString()) {
@@ -93,7 +96,8 @@ createProductReview:catchAsyncError( async (req,res,next) => {
         product.reviews.push(review)
         product.numOfReviews = product.reviews.length;
     }
-    product.ratings = product.reviews.reducer((acc,item)=>(item.rating+acc),0/product.reviews.length)
+    console.log("the product reiview",product.reviews);
+    product.ratings = product.reviews.reduce((acc,item)=>item.rating+acc,0) / product.reviews.length;
 
     await product.save({validateBeforeSave:false});
     res.status(200).json({
@@ -101,6 +105,39 @@ createProductReview:catchAsyncError( async (req,res,next) => {
         message: 'successfully added review'
     })
 
+}),
+// create product review  -> api/v1/product/review/:id
+getProductReview:catchAsyncError( async (req,res,next) => {
+        const product = await Product.findById(req.params.id);
+
+        res.status(200).json({
+            success: true,
+            reviews:product.reviews,
+            total:product.reviews.length
+        })
+}),
+// delete  product review  -> api/v1/product/review/:id
+deleteProductReview:catchAsyncError( async (req,res,next) => {
+    const product = await Product.findById(req.query.productId);
+    const reviews = product.reviews.filter(review =>review._id.toString()!==req.query.id.toString().trim())
+    const ratings = product.reviews.reduce((acc,review) => review.rating+acc,0) / reviews.length;
+    const numOfReviews = reviews.length;
+    // console.log("query",req.query.id,reviews._id);
+
+    // console.log("the review is",reviews,ratings,numOfReviews);
+
+    await Product.findByIdAndUpdate(req.query.productId,{
+        reviews,
+        ratings,
+        numOfReviews
+    },{new:true,runValidators:true,useFindAndModify:false})
+
+
+
+    res.status(200).json({
+        success: true,
+        message:"Successfully delete review"
+    })
 })
 }
 
